@@ -1,0 +1,2 @@
+class AccomodationPhotosController < ApplicationController
+end
