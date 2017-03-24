@@ -7,6 +7,9 @@ class HostsController < ApplicationController
 
   def index
     @hosts = Host.all
+    render json: @hosts.page(1)
+
+    #@users = User.order(:name).page params[:page]
   end
 
   def new
