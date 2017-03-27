@@ -1,2 +1,0 @@
-class HostAccomodation < ApplicationRecord
-end

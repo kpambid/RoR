@@ -5,15 +5,23 @@ class AccomodationsController < ApplicationController
   before_action :accomodation_params, only: [:create]
   before_action :get_host_id, only: [:create, :edit]
   before_action :find_accomodation_by_id
-  before_action :ensure_that_user_accomodation_id_exists, only: [:destroy]
+  before_action :ensure_that_accomodation_id_exists, only: [:destroy]
 
   def index
-    @accomodations = Accomodation.all
+    #binding.pry
+    @accomodations = Accomodation.with_hosts.page(params[:page]).per(2)
+    #@accomodations2 = Accomodation.order("name").page(params[:page]).per(2).to_sql
+
   end
 
   def create
+    #binding.pry
+    @email = Host.select(:email).where(:id => @host)
     new_accomodation = Accomodation.create(accomodation_params)
     render_json(new_accomodation)
+    if new_accomodation.save
+      HostMailer.added_accomodation_email(@email).deliver_now
+    end
   end
 
   def edit
@@ -40,7 +48,7 @@ class AccomodationsController < ApplicationController
     @accomodation = Accomodation.find_by(id: params[:id])
   end
 
-  def ensure_that_user_accomodation_id_exists
+  def ensure_that_accomodation_id_exists
     @found_accomodation_id ||= Accomodation.find_by(id: params[:id])
     unless @found_accomodation_id
       render json: {message: "Accomodation Id doesn't exist"}

@@ -1,0 +1,4 @@
+<%= form_for @accomodation_photo, url: new_host_accomodation_accomodation_photo_path , html: { multipart: true } do |form| %>
+  <%= form.file_field :photo %>
+  <li><%= link_to 'Upload Your Photo', new_host_accomodation_accomodation_photo_path %></li>
+<% end %>

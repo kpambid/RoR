@@ -1,0 +1,5 @@
+<div class="page-header"><h1>Photos</h1></div>
+
+<%= @accomodation_photos.each do |accomodation_photo| %>
+<%= image_tag(accomodation_photo.photo.url) %>
+<% end %>

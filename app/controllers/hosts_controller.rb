@@ -2,14 +2,11 @@ class HostsController < ApplicationController
   include RenderJson
 
   skip_before_action :verify_authenticity_token
-  before_action :ensure_that_user_host_id_exists, only: [:destroy]
+  before_action :ensure_that_host_id_exists, only: [:destroy]
   before_action :find_host_by_id, only: [:create, :edit]
 
   def index
-    @hosts = Host.all
-    render json: @hosts.page(1)
-
-    #@users = User.order(:name).page params[:page]
+    @hosts = Host.order("email").page(params[:page]).per(2)
   end
 
   def new
@@ -44,7 +41,7 @@ class HostsController < ApplicationController
     @host = Host.find_by(id: params[:id])
   end
 
-  def ensure_that_user_host_id_exists
+  def ensure_that_host_id_exists
     @found_host_id ||= Host.find_by(id: params[:id])
     unless @found_host_id
       render json: {message: "Host Id doesn't exist"}
