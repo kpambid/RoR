@@ -43,6 +43,7 @@ GEM
     arel (7.1.4)
     autoprefixer-rails (6.7.7)
       execjs
+    bcrypt (3.1.11)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -62,6 +63,12 @@ GEM
     commonjs (0.2.7)
     concurrent-ruby (1.0.5)
     debug_inspector (0.0.2)
+    devise (4.1.1)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0, < 5.1)
+      responders
+      warden (~> 1.2.3)
     diff-lcs (1.3)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -109,6 +116,7 @@ GEM
     nio4r (2.0.0)
     nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
+    orm_adapter (0.5.0)
     paperclip (5.0.0)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
@@ -155,6 +163,8 @@ GEM
     redis (3.3.3)
     redis-namespace (1.5.3)
       redis (~> 3.0, >= 3.0.4)
+    responders (2.2.0)
+      railties (>= 4.2.0, < 5.1)
     resque (1.27.2)
       mono_logger (~> 1.0)
       multi_json (~> 1.0)
@@ -225,6 +235,8 @@ GEM
       execjs (>= 0.3.0, < 3)
     vegas (0.1.11)
       rack (>= 1.0.0)
+    warden (1.2.6)
+      rack (>= 1.0)
     web-console (3.4.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -242,6 +254,7 @@ DEPENDENCIES
   bundler
   byebug
   coffee-rails (~> 4.2)
+  devise
   jbuilder (~> 2.5)
   jquery-rails
   kaminari

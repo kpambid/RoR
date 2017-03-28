@@ -69,3 +69,5 @@ gem 'resque-web', require: 'resque_web'
 gem 'resque'
 
 gem 'bundler'
+
+gem 'devise'
