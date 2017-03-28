@@ -15,12 +15,10 @@ class AccomodationsController < ApplicationController
   end
 
   def create
-    #binding.pry
-    @email = Host.select(:email).where(:id => @host)
     new_accomodation = Accomodation.create(accomodation_params)
     render_json(new_accomodation)
     if new_accomodation.save
-      HostMailer.added_accomodation_email(@email).deliver_now
+      Resque.enqueue(EmailHost, new_accomodation.id)
     end
   end
 

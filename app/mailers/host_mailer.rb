@@ -1,10 +1,8 @@
 class HostMailer < ApplicationMailer
+  default from: "info@postbox.tut", to: "example@email.com"
 
-  def added_accomodation_email(host)
-    #binding.pry
-    @host = host
-    @url  = "http://localhost:3000/hosts/6/accomodations"
-    # binding.pry
-    mail(to: host.email, subject: "You've added new accomodations")
+  def added_accomodation_email(accomodation)
+    @accomodation = accomodation
+    mail(subject: "You've added new accomodations")
   end
 end

@@ -1,14 +1,15 @@
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <h1>Notification email.</h1>
   </head>
   <body>
-    <h1>Welcome to example.com, Kay</h1>
+    <h1>Welcome to <example class="com"></example></h1>
     <p>
-      You have added a new accomodation, Grape picking.<br>
+      You have added a new accomodation, <%= @accomodation.name %>.<br>
     </p>
     <p>
-      To add new accomodations, just follow this link: <%= @url %>.
+      To add new accomodations, just follow this link:
     </p>
     <p>Thanks for joining and have a great day!</p>
   </body>
