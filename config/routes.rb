@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
+  #  root to: "devise/sessions#create"
+  devise_for :hosts
 
   resources :notifications
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

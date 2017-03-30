@@ -71,3 +71,7 @@ gem 'resque'
 gem 'bundler'
 
 gem 'devise'
+
+gem 'omniauth-facebook'
+
+gem 'rack'
