@@ -72,6 +72,8 @@ gem 'bundler'
 
 gem 'devise'
 
-gem 'omniauth-facebook'
+gem 'omniauth'
+
+gem 'omniauth-facebook', '1.4.0'
 
 gem 'rack'

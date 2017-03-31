@@ -34,7 +34,8 @@ class HostsController < ApplicationController
   private
 
   def host_params
-    params.permit(:email, :password, :first_name, :last_name, :location, :image_url)
+    params.permit(:email, :password, :first_name, :last_name, :location,
+    :image_url, :provider, :uid, :name, :oauth_token)
   end
 
   def find_host_by_id
