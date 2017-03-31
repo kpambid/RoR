@@ -1,7 +1,7 @@
 class Host < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
   paginates_per 2
   has_many :accomodations
@@ -17,4 +17,18 @@ class Host < ActiveRecord::Base
     end
   end
 
+  def self.new_wtih_session(params, session)
+    if session["devise.host_attributes"]
+      new(session["devise.host_attributes"], without_protection: true) do |host|
+        host.attributes = params
+        host.valid?
+      end
+    else
+      super
+    end
+  end
+  
+  def password_required
+    super && provider.blank?
+  end
 end
