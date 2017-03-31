@@ -267,5 +267,5 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   require "omniauth-facebook"
   config.omniauth :facebook, ENV['1874934166120562'], ENV['1ccf1e6702ad3434cd4a845f82253ddf'],
-   {:scope => 'offline_access,email'}
+   :scope => 'offline_access', :provider_ignores_state => true
 end
