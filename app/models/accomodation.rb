@@ -8,4 +8,8 @@ class Accomodation < ActiveRecord::Base
   def self.with_hosts
     includes(:host).order("name")
   end
+
+  def self.search(search)
+    where("name LIKE ?", "%#{search}%")
+  end
 end

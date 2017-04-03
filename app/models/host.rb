@@ -27,7 +27,7 @@ class Host < ActiveRecord::Base
       super
     end
   end
-  
+
   def password_required
     super && provider.blank?
   end

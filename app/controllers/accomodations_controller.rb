@@ -9,8 +9,10 @@ class AccomodationsController < ApplicationController
 
   def index
     #binding.pry
-    @accomodations = Accomodation.with_hosts.page(params[:page]).per(2)
+    #@accomodations = Accomodation.with_hosts.page(params[:page]).per(2)
     #@accomodations2 = Accomodation.order("name").page(params[:page]).per(2).to_sql
+    #binding.pry
+    @accomodations = Host.find(accomodation_params[:host_id]).accomodations.page(params[:page]).per(2)
 
   end
 
@@ -30,6 +32,10 @@ class AccomodationsController < ApplicationController
   def destroy
     deleted_host = @found_accomodation_id.destroy
     render_json(deleted_host)
+  end
+
+  def search
+    @searched_accomodation = Host.find(accomodation_params[:host_id]).accomodations.search(params[:search])
   end
 
   private
