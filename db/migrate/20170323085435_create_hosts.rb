@@ -1,5 +1,4 @@
 class CreateHosts < ActiveRecord::Migration[5.0]
-  paginates_per 2
   def change
     create_table :hosts do |t|
       t.string :email
